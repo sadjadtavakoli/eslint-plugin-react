@@ -3988,32 +3988,6 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        const projectType = PropTypes.shape({
-          id: PropTypes.string.isRequired,
-          name: PropTypes.string.isRequired,
-        });
-
-        const nodesType = PropTypes.arrayOf(
-          PropTypes.shape({ project: projectType, children: nodesType }),
-        );
-
-        class ProjectNode extends React.Component {
-          render() {
-            return <div />;
-          }
-        }
-
-        ProjectNode.propTypes = {
-          project: projectType.isRequired,
-          nodes: nodesType,
-          depth: PropTypes.number.isRequired,
-          setActiveProject: PropTypes.func.isRequired,
-          activeProject: projectType,
-        };
-      `,
-    },
-    {
-      code: `
         import React from 'react';
 
         interface SomeType<ContextType = any> {
